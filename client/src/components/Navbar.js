@@ -79,7 +79,7 @@ const Navbar = () => {
     });
     return () => {
       // cancel the subscription
-      isApiSubscribed = false;
+      isApiSubscribed = false; 
     };
   }, []);
   /* ----------------------- GET_NOTIFICATIONS ----------------------- */

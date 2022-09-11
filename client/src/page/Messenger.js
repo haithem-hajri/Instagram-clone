@@ -33,6 +33,7 @@ const Conversations = () => {
       if (isApiSubscribed) {
         dispatch(getConversations()).then(() => {
           if (locationId) {
+            console.log("locationId",locationId)
             if (locationId === msg.sender) {
               dispatch(newMessage(msg));
             }

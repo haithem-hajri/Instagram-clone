@@ -41,7 +41,6 @@ const userSlice = createSlice({
       state.messagesNotification = action.payload;
     },
     setNewMessageNotfication: (state, action) => {
-      console.log("action", action.payload);
       state.messagesNotification = [action.payload, ...state.notifications];
     },
     setUpdate: (state, action) => {
@@ -319,7 +318,6 @@ export function updateMessageNotifications(senderId) {
         }
       )
       .then((response) => {
-        console.log("response:", response.data);
         dispatch(setMessageNotfication(response.data));
       })
       .catch((err) => {
