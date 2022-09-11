@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
-const config = require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const auth = require("./routes/auth");
@@ -15,9 +14,13 @@ const messages = require("./routes/messages");
 const http = require("http");
 const socketIo = require("socket.io");
 const User = require("./models/User");
+require("dotenv").config();
+
+mongoose.Promise = global.Promise;
 //console.log("first",process.env.MONGO_URI) 
+// "mongodb+srv://insta:99256188@insta.uhtc9ra.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(
-  "mongodb+srv://insta:99256188@insta.uhtc9ra.mongodb.net/?retryWrites=true&w=majority",
+  process.env.MONGO_URI,
   {
     useNewUrlParser: true,
     // useCreateIndex: true,

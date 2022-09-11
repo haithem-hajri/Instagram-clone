@@ -69,7 +69,7 @@ function App() {
       });
     }
   }, [user]);
-  React.useEffect(() => {
+  React.useEffect(() => { 
     const token = localStorage.getItem("token");
     if (token) {
       dispatch(getUser());
