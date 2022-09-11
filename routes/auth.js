@@ -50,11 +50,16 @@ router.post("/signin", (req, res) => {
       .compare(password, saveduser.password)
       .then((doMatch) => {
         if (doMatch) {
-          jwt.sign(
+          const token = jwt.sign(
             { _id: saveduser._id },
-            process.env.JWT_SECRET,
-            (err, token) => {
-              if (err) throw err;
+            process.env.JWT_SECRET
+          );
+          Notification.find({ user: saveduser._id })
+            .populate("user", "_id name avatar")
+            .populate("sender", "_id name avatar")
+            .sort({ createdAt: -1 })
+            .limit(9)
+            .then((result) => {
               const { _id, name, email, followers, following, avatar } =
                 saveduser;
               res.json({
@@ -67,34 +72,12 @@ router.post("/signin", (req, res) => {
                   following,
                   avatar,
                 },
-                notifications: [],
+                notifications: result,
               });
-            }
-          );
-          // Notification.find({ user: saveduser._id })
-          //   .populate("user", "_id name avatar")
-          //   .populate("sender", "_id name avatar")
-          //   .sort({ createdAt: -1 })
-          //   .limit(9)
-          //   .then((result) => {
-          //     const { _id, name, email, followers, following, avatar } =
-          //       saveduser;
-          //     res.json({
-          //       token: "Bearer " + token,
-          //       user: {
-          //         _id,
-          //         name,
-          //         email,
-          //         followers,
-          //         following,
-          //         avatar,
-          //       },
-          //       notifications: result,
-          //     });
-          //   })
-          //   .catch((err) => {
-          //     res.status(500).json(err);
-          //   });
+            })
+            .catch((err) => {
+              res.status(500).json(err);
+            });
         }
         //{res.json('succesfully sign in')}
         else {
