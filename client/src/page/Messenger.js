@@ -29,6 +29,7 @@ const Conversations = () => {
     let isApiSubscribed = true;
      const locationId = location.pathname.split("/direct/")[1];
     Socket.on("message", (msg) => {
+      console.log("message",msg)
       if (isApiSubscribed) {
         dispatch(getConversations()).then(() => {
           if (locationId) {

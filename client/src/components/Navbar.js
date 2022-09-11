@@ -73,7 +73,6 @@ const Navbar = () => {
   React.useEffect(() => {
     let isApiSubscribed = true;
     Socket.on("messageNotification", (msg) => {
-      console.log("messageNotification", msg);
       if (isApiSubscribed) {
         dispatch(getmessageNotifications());
       }
