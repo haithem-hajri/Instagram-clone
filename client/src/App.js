@@ -19,7 +19,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "./features/user/userSlice";
 export const Usercontext = createContext();
 //http://localhost:5000
-//
+//https://instagram5.herokuapp.com
 export const Socket = io("https://instagram5.herokuapp.com");
 const Routing = () => {
   return (

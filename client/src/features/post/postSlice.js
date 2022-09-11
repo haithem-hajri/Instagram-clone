@@ -29,8 +29,6 @@ const postSlice = createSlice({
       state.errors = null;
     },
     addComment: (state, action) => {
-      console.log("action:",action.payload)
-      console.log("state:",state.posts)
       state.posts = state.posts.map((post) =>
         post._id === action.payload._id
           ? {
@@ -150,7 +148,6 @@ export function createPost(url,title,setLoading,setIsOpen) {
         }
       )
       .then((response) => {
-        console.log("response:",response)
         setLoading(false)
         setIsOpen(false)
         dispatch(addPost(response.data));

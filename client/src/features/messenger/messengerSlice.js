@@ -91,7 +91,6 @@ export function getMessages(receiverId) {
       })
       .then((response) => {
         dispatch(SetIsLoading(false));
-        console.log("response messages :" ,response.data.conversation )
        if (response.data.messages) {
           dispatch(setMessage(response.data.messages));
        } else {

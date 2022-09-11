@@ -29,11 +29,11 @@ const Conversations = () => {
     let isApiSubscribed = true;
      const locationId = location.pathname.split("/direct/")[1];
     Socket.on("message", (msg) => {
-      console.log("message",msg)
+      //console.log("message",msg)
       if (isApiSubscribed) {
         dispatch(getConversations()).then(() => {
           if (locationId) {
-            console.log("locationId",locationId)
+          //  console.log("locationId",locationId)
             if (locationId === msg.sender) {
               dispatch(newMessage(msg));
             }
@@ -45,7 +45,7 @@ const Conversations = () => {
       // cancel the subscription
       isApiSubscribed = false;
     };
-  }, []);
+  }, [location.pathname , dispatch]);
 
   return (
     <div className="w-full h-full p-5">

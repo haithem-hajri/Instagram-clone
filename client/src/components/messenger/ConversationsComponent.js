@@ -11,9 +11,7 @@ const ConversationsComponent = (props) => {
   const messageNotifications = useSelector(
     (state) => state.user.messagesNotification
   );
-  React.useEffect(() => {
-    console.log("messageNotifications", messageNotifications);
-  }, [messageNotifications]);
+
   return (
     <Link to={"/direct/" + friend?._id}>
       <div
@@ -23,7 +21,7 @@ const ConversationsComponent = (props) => {
             : "flex justify-start items-center p-4 gap-3 cursor-pointer hover:bg-gray-200"
         }
       >
-        <img 
+        <img
           className="w-14 h-14 rounded-full"
           src={friend?.avatar}
           alt="user"
