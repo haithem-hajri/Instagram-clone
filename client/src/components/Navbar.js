@@ -65,8 +65,9 @@ const Navbar = () => {
   useOutsideClick(notificationRef, notificationMenu, setNotificationMenu);
   /* ----------------------- GET_NOTIFICATIONS_MESSAGES ----------------------- */
   React.useEffect(() => {
+    if(user?._id)
     dispatch(getmessageNotifications());
-  }, []);
+  }, [user]);
 
   React.useEffect(() => {
     let isApiSubscribed = true;
