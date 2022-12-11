@@ -39,7 +39,7 @@ mongoose.connect(
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://insta5.onrender.com",
   },
 }); //in case server and client run on different urls
 io.on("connection", (socket) => {
