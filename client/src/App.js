@@ -20,7 +20,7 @@ import { getUser } from "./features/user/userSlice";
 export const Usercontext = createContext();
 //http://localhost:5000
 //https://instagram5.herokuapp.com
-export const Socket = io("https://insta-api-f7oj.onrender.com");
+export const Socket = io("https://insta5.onrender.com");
 const Routing = () => {
   return (
     <Routes>
